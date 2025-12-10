@@ -26,7 +26,6 @@ export async function batch(): Promise<BatchResult> {
       WHERE id = 1
     `;
 
-    // Only returns data, never an error object
     return { start, end };
     
   } catch (err) {
