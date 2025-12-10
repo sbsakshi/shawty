@@ -3,9 +3,30 @@ import db from "../../../lib/db";
 import { error } from "console";
 import { getNextId } from "../../../lib/idprovider";
 import { toBase62 } from "../../../lib/hashprovider";
+import { redis,ratelimit } from "../../../lib/redis";
+
 
 export async function POST(req:NextRequest){
     try{
+
+      const identifier = req.headers.get("x-forwarded-for") ?? "127.0.0.1";
+
+      const { success, limit, reset, remaining } = await ratelimit.limit(identifier);
+
+      if (!success) {
+      return NextResponse.json(
+        { error: "Too many requests. Please try again later." },
+        { 
+          status: 429,
+          headers: {
+            "X-RateLimit-Limit": limit.toString(),
+            "X-RateLimit-Remaining": remaining.toString(),
+            "X-RateLimit-Reset": reset.toString(),
+          }
+        }
+      );
+    }
+    
         const {url}=await req.json()
         const newId=await getNextId()
         console.log("Generated id:", newId);

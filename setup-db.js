@@ -19,10 +19,12 @@ async function main() {
 //     short_code VARCHAR(10) NOT NULL
 // );
 //     `)
- const result = await db.sql(
-      `SELECT original_url FROM url_mappings WHERE short_code ='E' `
-    );
-    console.log(result);
+//  const result = await db.sql(
+//       `SELECT original_url FROM url_mappings WHERE short_code ='E' `
+//     );
+//     console.log(result);
+
+await db.sql(`ALTER TABLE url_mappings ADD COLUMN clicks INTEGER DEFAULT 0;`)
 
   }catch(error){
 console.log({ error: error });  }
