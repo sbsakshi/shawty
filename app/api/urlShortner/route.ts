@@ -20,8 +20,7 @@ export async function POST(req:NextRequest){
   console.log(short_code);
   return NextResponse.json({ 
     success: true,
-    shortUrl: `https://yourdomain.com/${short_code}`,
-    debug_id: 1
+    shortUrl: `http://localhost:3000/api/urlShortner/${short_code}`,
   })
     }catch (err) {
   console.error("POST /api error:", err);
