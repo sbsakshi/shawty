@@ -6,7 +6,7 @@
     "dev": "next dev --turbopack",
     "build": "next build",
     "cron": "ts-node cron/scheduler.ts",
-    "start:all": "npx concurrently \"dotenv --file .env.local -- npx tsx cron/scheduler.ts\" \"next dev\"",
+    "start:all": "dotenv --file .env.local -- concurrently \"./node_modules/.bin/tsx cron/scheduler.ts\" \"next dev\"",
     "start": "next start",
     "lint": "next lint"
   },
@@ -19,8 +19,7 @@
     "next": "16.0.6",
     "node-cron": "^4.2.1",
     "react": "19.2.0",
-    "react-dom": "19.2.0",
-    "tsx": "^4.21.0"
+    "react-dom": "19.2.0"
   },
   "devDependencies": {
     "@tailwindcss/postcss": "^4",
@@ -29,6 +28,7 @@
     "@types/react-dom": "^19",
     "concurrently": "^9.2.1",
     "tailwindcss": "^4.1.2",
+    "tsx": "^4.21.0",
     "typescript": "^5"
   }
 }

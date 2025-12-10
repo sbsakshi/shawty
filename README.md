@@ -1,6 +1,6 @@
 
 
-#  High-Scale URL Shortener Service
+#  Shawty: URL Shortener Service ✨
 
 A distributed, production-grade URL shortening system engineered for **high read throughput**, **low-latency redirects**, and **strong data consistency**.
 It uses deterministic identifier generation, Redis-based caching, sliding-window rate limiting, and asynchronous write-behind analytics to scale reliably under heavy load.
@@ -28,7 +28,7 @@ It uses deterministic identifier generation, Redis-based caching, sliding-window
 
    * [Analytics Sync](#analytics-sync)
    * [Security](#security)
-6. [License](#license)
+
 
 ---
 
